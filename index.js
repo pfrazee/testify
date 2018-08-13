@@ -35,8 +35,6 @@ document.addEventListener('run', async e => {
     return
   }
 
-  console.log(tests)
-
   // run the tests sequentially
   for (var test of tests) {
     try {
