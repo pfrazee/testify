@@ -45,5 +45,15 @@ document.addEventListener('run', async e => {
       testResultsEl.error(e)
     }
   }
+
+  // run cleanup
+  testResultsEl.notice('Cleaning up test data...')
+  try {
+    await API.cleanup()
+  } catch (e) {
+    testResultsEl.fail('Failed to run the final cleanup')
+    testResultsEl.error(e)
+  }
+  
   testResultsEl.finish()
 })

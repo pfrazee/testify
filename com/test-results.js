@@ -31,6 +31,10 @@ export class TestResultsElement extends HTMLElement {
     this.log('notice', 'Starting')
   }
 
+  notice (str) {
+    this.log('notice', str)
+  }
+
   pass (str) {
     this.log('pass', str, '&check;')
   }
