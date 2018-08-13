@@ -71,11 +71,11 @@ export async function cleanup () {
 
 function _deepEqual (a, b) {
   if (!a || !b || typeof a !== 'object' || typeof b !== 'object') {
-    return a === b // fast exit!
+    return a === b
   }
 
-  var aProps = Object.getOwnPropertyNames(a)
-  var bProps = Object.getOwnPropertyNames(b)
+  var aProps = Object.keys(a)
+  var bProps = Object.keys(b)
 
   if (aProps.length !== bProps.length) {
     return false
