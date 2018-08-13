@@ -15,14 +15,17 @@ export function fail (desc = 'fail') {
 }
 
 export function equal (a, b, desc = 'equal') {
+  console.debug('equal(', a, ',', b, ')')
   assert(a === b, desc)
 }
 
 export function notEqual (a, b, desc = 'notEqual') {
+  console.debug('notEqual(', a, ',', b, ')')
   assert(a !== b, desc)
 }
 
 export function deepEqual (a, b, desc = 'deepEqual') {
+  console.debug('deepEqual(', a, ',', b, ')')
   assert(_deepEqual(a, b), desc)
 }
 
