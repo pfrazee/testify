@@ -1,4 +1,6 @@
 export default function (test) {
+  test.section('Basic test structure')
+
   test('this test will pass with one assertion', async t => {
     t.assert(1 === 1, '1 is 1')
   })
@@ -16,6 +18,14 @@ export default function (test) {
   test('this test will fail', async t => {
     t.assert(0 === 1, '0 is not 1')
   })
+
+  test.skip('this test will be skipped')
+
+  test.skip('this test will also be skipped', async t => {
+    throw new Error('fail')
+  })
+
+  test.section('Assertions')
 
   test('equal', async t => {
     t.equal(1, 1)

@@ -13,6 +13,16 @@ document.addEventListener('run', async e => {
   var tests = []
   testResultsEl.reset()
 
+  function defineTest (desc, fn) {
+    tests.push({desc, fn})
+  }
+  defineTest.section = function (desc) {
+    tests.push({desc, section: true})
+  }
+  defineTest.skip = function (desc, fn) {
+    tests.push({desc, skip: true})
+  }
+
   // load the tests module
   var testsModule
   try {
@@ -25,9 +35,6 @@ document.addEventListener('run', async e => {
 
   // define the tests
   try {
-    function defineTest (desc, fn) {
-      tests.push({desc, fn})
-    }
     testsModule.default(defineTest)
   } catch (e) {
     testResultsEl.fail('Failed to load tests')
@@ -37,6 +44,14 @@ document.addEventListener('run', async e => {
 
   // run the tests sequentially
   for (var test of tests) {
+    if (test.section) {
+      testResultsEl.notice(test.desc)
+      continue
+    }
+    if (test.skip) {
+      testResultsEl.skip(test.desc)
+      continue      
+    }
     try {
       await test.fn(API)
       testResultsEl.pass(test.desc || '')

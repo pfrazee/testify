@@ -28,11 +28,14 @@ export class TestResultsElement extends HTMLElement {
       <div class="container"></div>
     `
     this.startTime = Date.now()
-    this.log('notice', 'Starting')
   }
 
   notice (str) {
     this.log('notice', str)
+  }
+
+  skip (str) {
+    this.log('skip', str, '&raquo;')
   }
 
   pass (str) {
