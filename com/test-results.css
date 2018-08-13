@@ -1,0 +1,27 @@
+.container > div {
+  margin: 10px 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.container > div > span {
+  display: inline-block;
+  width: 20px;
+}
+
+.notice {
+  font-weight: bold;
+}
+
+.pass {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+.error {
+  padding: 4px 10px 10px;
+  color: #777;
+}
